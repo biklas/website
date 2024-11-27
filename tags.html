@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    
+        /* Style to create a horizontal list */
+        ul.horizontal-list {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+    
+        ul.horizontal-list li {
+          margin-right: 10px;
+        }
+      </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="horizontal-list" >
+            <li><a href="index.html">INDEX</a></li>
+            <li><a href="projekt1.html">PROJEKT</a></li>
+            <li><a href="tags.html">TAGS</a></li>
+        </ul>
+    </nav>     
+    
+
+    <p>
+        Ctrl/cmd+Shift+7 === Comment      <br><br>      
+
+        &amp;nbsp; ===     nbsp                         <br>
+        &amp;lt;   ===     &lt;                         <br>
+        &amp;gt;   ===     &gt;                         <br>
+        &amp;amp;  ===     &amp;                        <br>
+        &amp;quot; ===     &quot;                       <br>
+        &amp;euro; ===     &euro;                       <br>
+    </p>
+
+    <p>
+        &lt;p&gt;  &lt;/p&gt; === paragraph             <br>
+        &lt;br&gt;            === break                 <br>
+        &lt;a&gt;  &lt;/a&gt; === link                  <br>
+        &lt;img&gt;  (&lt;/img&gt;) === image           <br>
+        &lt;div&gt;  &lt;/div&gt;  === division         <br>
+    </p>
+
+<label>
+  <input type="checkbox" onclick="document.getElementById('hidden-gif').style.display = this.checked ? 'block' : 'none';">
+</label>
+
+<div id="hidden-gif" style="display:none;">
+    <img src="https://i.giphy.com/gKfyusl0PRPdTNmwnD.webp" alt="dafoe">
+</div>
+    
+</body>
+</html>
