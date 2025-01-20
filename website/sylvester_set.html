@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishTennisTube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #FF0000;
+            display: inline-block;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 20px;
+            padding: 20px 40px;
+        }
+        .video-player {
+            grid-column: 1 / 2;
+        }
+        video {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .video-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .comment-input {
+            margin: 10px 0;
+        }
+        .comment-input input {
+            width: 80%;
+            padding: 8px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment-input button {
+            padding: 8px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .comment-input button:hover {
+            background-color: #0056b3;
+        }
+        .comments {
+            grid-column: 1 / 2;
+        }
+        .comment-list {
+            list-style: none;
+            padding: 0;
+        }
+        .comment {
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .pinned-comment {
+            background: #f1f1f1;
+            border: 1px solid #ddd;
+        }
+        .thumbnails {
+            grid-column: 2 / 3;
+            display: flex;
+            flex-direction: column;
+        }
+        .thumbnail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .thumbnail img {
+            width: 100px;
+            height: 60px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .thumbnail span {
+            font-size: 14px;
+            display: block;
+        }
+        .timestamp {
+            color: #007bff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .timestamp:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .thumbnails {
+                grid-column: 1 / 2;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">FishTennisTube</div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Video Player -->
+        <div class="video-player">
+            <video id="video-player" controls>
+                <source src="https://dl.dropboxusercontent.com/scl/fi/kg2ptvlh9fcaxeezrgrgm/Sylvester-Mix.mp4?rlkey=p0hwphag72zf1ah23oulpt9ez&st=ly0vz9t7&dl=0" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-title" id="video-title">silvester_mix.mp4</div>
+            <!-- Comment Input -->
+            <div class="comment-input">
+                <input type="text" id="comment-text" placeholder="Add a comment...">
+                <button onclick="addComment()">Comment</button>
+            </div>
+        </div>
+
+        <!-- Recommended Videos -->
+        <div class="thumbnails">
+            <div class="thumbnail" onclick="playVideo('https://dl.dropboxusercontent.com/scl/fi/kg2ptvlh9fcaxeezrgrgm/Sylvester-Mix.mp4?rlkey=p0hwphag72zf1ah23oulpt9ez&st=ly0vz9t7&dl=0', 'silvester_mix.mp4')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/p8de77sgc7kxqgux01u6l/silvester-thumb.jpg?rlkey=ohhvjd6n9pivea0gietr9dna0&st=p0xk9f23&dl=0" alt="Thumbnail 1">
+                <span>silvester_mix.mp4<br>1.2M views</span>
+            </div>
+            <div class="thumbnail" onclick="playVideo('https://example.com/video1.mp4', 'Bopys joins the battle')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/rcavdb0cy66bs0hc9r78v/Bopys-joins-the-battle-original.jpg?rlkey=ipykipzdtzvzn1446oia1xrnl&e=1&st=rdes8xe2&dl=0" alt="Thumbnail 2">
+                <span>Bopys joins the battle<br>320K views</span>
+            </div>
+            <div class="thumbnail" onclick="playVideo('https://example.com/video2.mp4', 'F for respect')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/h588g4ulamgkg3v0405qo/IMG-20180429-WA0015.jpg?rlkey=3s9z7bbqk7ovbmbpwrbf3guri&e=1&st=ajh7pnkg&dl=0" alt="Thumbnail 3">
+                <span>F for respect<br>987K views</span>
+            </div>
+            <div class="thumbnail" onclick="playVideo('https://dl.dropboxusercontent.com/scl/fi/gf7x4zgx9avxicxsr2yg4/earisch-mario.mp4?rlkey=xa9bjbltbh38q62fcife9f8v7&st=0r1j81gv&dl=0', 'Best of Peter Mann')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/kgh5y1q2fmtf43h56anov/peter-staubsauger.PNG?rlkey=c8uxssldg486xilh2lujs6ghj&st=4ywpcj7i&dl=0" alt="Thumbnail 4">
+                <span>Best of Peter Mann<br>340K views</span>
+            </div>
+            <div class="thumbnail" onclick="playVideo('https://example.com/video4.mp4', 'MLGChappiexd.mp4')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/cagddrst6xz7a03hho1rz/thumbnail-mlg-chappie.png?rlkey=qotim9898sr4scz1fmorqek52&e=1&st=x83qy9r7&dl=0" alt="Thumbnail 5">
+                <span>MLGChappiexd.mp4<br>12.2M views</span>
+            </div>
+            <div class="thumbnail" onclick="playVideo('https://dl.dropboxusercontent.com/scl/fi/ltno1kv02xd4iys1jirja/Valheim-10-Minutes-Of-Meadows.mp4?rlkey=0lj4mtgchtzlyy98yyqspckdw&e=1&st=kvfetqxa&dl=0', '10 Minutes Of Valheim Meadows')">
+                <img src="https://dl.dropboxusercontent.com/scl/fi/wtfm69maq8yv74y6j99fn/20240522203415_1.jpg?rlkey=mjj5br4wt9l63pptmeon4kcc1&e=1&st=f0ggx0es&dl=0" alt="Thumbnail 6">
+                <span>10 Minutes Of Valheim Meadows<br>128K views</span>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments">
+            <ul class="comment-list" id="comment-list">
+                <li class="comment pinned-comment">
+                    <strong>Moments</strong><br>
+                    <p>
+                        <span class="timestamp" onclick="jumpTo(1870)">00:31:10 - Fischtennis DJ moment</span><br>
+                        <span class="timestamp" onclick="jumpTo(2971)">00:49:31 - Fischtennis DJ moment 2</span><br>
+                        <span class="timestamp" onclick="jumpTo(3381)">00:56:21 - Franz 😳</span><br>
+                        <span class="timestamp" onclick="jumpTo(4864)">01:21:04 - Cam crash</span><br>
+                        <span class="timestamp" onclick="jumpTo(4971)">01:22:51 - Michi wird hopsgenommen 🔫</span><br>
+                        <span class="timestamp" onclick="jumpTo(10307)">02:51:47 - Whoo</span><br>
+                        <span class="timestamp" onclick="jumpTo(10692)">02:58:12 - drei ???</span><br>
+                        <span class="timestamp" onclick="jumpTo(10840)">03:00:40 - zoomout</span><br>
+                        <span class="timestamp" onclick="jumpTo(14845)">04:07:25 - smol bounce interlude</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function playVideo(videoSrc, title) {
+            const videoPlayer = document.getElementById('video-player');
+            const videoTitle = document.getElementById('video-title');
+            videoPlayer.src = videoSrc;
+            videoPlayer.play();
+            videoTitle.textContent = title;
+        }
+
+        function jumpTo(seconds) {
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.currentTime = seconds;
+            videoPlayer.play();
+        }
+
+        function addComment() {
+            const commentText = document.getElementById('comment-text').value;
+            if (commentText) {
+                const commentList = document.getElementById('comment-list');
+                const newComment = document.createElement('li');
+                newComment.className = 'comment';
+                newComment.textContent = commentText;
+                commentList.appendChild(newComment);
+                document.getElementById('comment-text').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
