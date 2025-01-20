@@ -1,0 +1,63 @@
+body {
+    background-color: rgb(10, 10, 10);
+    height: 100vh;
+    margin: 0px;
+    overflow: hidden;
+  }
+  
+  .image {
+    max-width: 60vmin;
+    max-height: 45vmin;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+  }
+  
+  .image[data-status="inactive"] {
+    display: none;
+  }
+  
+  .image[data-status="active"] {
+    display: block;
+  }
+
+  .foreground {
+    position: relative;
+    z-index: 100;
+  }
+
+  .background {
+    position: relative;
+    z-index: -100;
+  }
+
+  .caption1 {
+    margin: 70px 0 70px 120px; 
+    text-decoration: none; 
+    color: rgb(255, 255, 255); 
+    font-size: 5vw;
+    font-family: "Comfortaa", serif;
+    text-transform: uppercase;
+  }
+  
+
+  /* Use a unique and descriptive class name */
+  /* Use a value from 300 to 700 */
+
+.comfortaa-unique {
+  font-family: "Comfortaa", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dotted-line {
+  border-top: 1px dotted black;
+  width: 100%;
+  transform: rotate(45deg);
+  display: none;
+}
+.text-paragraph {
+  display: none;
+}

@@ -37,17 +37,18 @@ ul.horizontal-list li {
 }
 
 .gallery-item{
-    border-radius: 2vw;
+    border-radius: 1.5vw;
     position: relative;
     overflow: hidden;   
     height: 100%;
     width: 100%;
     padding: 0;
-    margin: 2vw 0 0 0;
+    margin: 5vw 0 0 0;
 }
 .gallery-item:hover{
-    border-radius: 1vw;
-    
+    border-radius: .5vw;
+    box-shadow: 0 0 .5vw rgba(0,0,0,3);
+    transition: all 0.2s ease;
 }
 
 .image-gallery {
@@ -56,6 +57,7 @@ ul.horizontal-list li {
     gap: 10px;
     border-radius: 10px;
 }
+.gallery-
 
 body {
     height: 100%;
@@ -67,5 +69,11 @@ body {
     padding: 200px;
     margin: 0 0 200px 0;
 } */
+
+
+
+
+
+
 
 
